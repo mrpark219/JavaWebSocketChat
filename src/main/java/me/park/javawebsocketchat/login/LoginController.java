@@ -16,16 +16,16 @@ import javax.servlet.http.HttpSession;
 @Slf4j
 public class LoginController {
 
-    @RequestMapping(value = "/login.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(HttpServletRequest request, HttpServletResponse response) {
         return "login";
     }
 
-    @RequestMapping(value = "/loginProcess.do", method = RequestMethod.POST)
+    @RequestMapping(value = "/loginProcess", method = RequestMethod.POST)
     public String loginProcess(@RequestParam String nickname, HttpServletRequest request, HttpServletResponse response, Model model) {
 
         if(nickname == null || nickname.equals("")) {
-            model.addAttribute("message", new Message("닉네임은 한 글자 이상 입력해주세요.", "/logout.do"));
+            model.addAttribute("message", new Message("닉네임은 한 글자 이상 입력해주세요.", "/logout"));
             return "message";
         }
 
@@ -36,10 +36,10 @@ public class LoginController {
         session.setAttribute("nickname", nickname);
         session.setAttribute("ip", ip);
 
-        return "redirect:/chat.do";
+        return "redirect:/chat";
     }
 
-    @RequestMapping(value = "/logout.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout(HttpServletRequest request, HttpServletResponse response) {
 
         HttpSession session = request.getSession();
@@ -48,7 +48,7 @@ public class LoginController {
 
         session.removeAttribute("nickname");
 
-        return "redirect:/login.do";
+        return "redirect:/login";
     }
 
 }

@@ -42,10 +42,10 @@
         function openSocket() {
             if (ws !== undefined && ws.readyState !== WebSocket.CLOSED) {
                 alert('웹소켓 서버에 접속하는 과정에서 오류가 발생했습니다.\n로그인 페이지로 이동합니다.');
-                location.href = '/logout.do';
+                location.href = '/logout';
             }
 
-            ws = new WebSocket("ws://localhost:8080/echo.do");
+            ws = new WebSocket("ws://localhost:8080/echo");
 
             //소켓 열림
             ws.onopen = (event) => {
@@ -63,13 +63,13 @@
             //소켓 닫힘
             ws.onclose = (event) => {
                 alert('웹소켓 서버와 접속이 종료되었습니다.\n로그인 페이지로 이동합니다.');
-                location.href = '/logout.do';
+                location.href = '/logout';
             };
 
             //오류 발생
             ws.onerror = (event) => {
                 alert('웹소켓 서버에 접속하는 과정에서 오류가 발생했습니다.\n로그인 페이지로 이동합니다.');
-                location.href = '/logout.do';
+                location.href = '/logout';
             };
 
         }
@@ -79,7 +79,7 @@
             if (ws !== undefined && ws.readyState !== WebSocket.CLOSED) {
                 ws.close();
             }
-            location.href = '/logout.do';
+            location.href = '/logout';
         }
 
         //전송

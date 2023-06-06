@@ -24,12 +24,12 @@ public class ChatController {
         this.chatRepository = chatRepository;
     }
 
-    @RequestMapping(value = "/chat.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/chat", method = RequestMethod.GET)
     public String chat(HttpServletRequest request, HttpServletResponse response, Model model) {
 
         HttpSession session = request.getSession();
         if(session.getAttribute("nickname") == null || session.getAttribute("nickname").equals("")) {
-            model.addAttribute("message", new Message("정상적인 경로로 접근해주세요.", "/logout.do"));
+            model.addAttribute("message", new Message("정상적인 경로로 접근해주세요.", "/logout"));
             return "message";
         }
 

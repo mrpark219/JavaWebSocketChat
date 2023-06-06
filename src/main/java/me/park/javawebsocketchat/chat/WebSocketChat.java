@@ -18,7 +18,7 @@ import java.util.Map;
 
 @Slf4j
 @Component
-@ServerEndpoint(value = "/echo.do", configurator = WebSocketConfigurator.class)
+@ServerEndpoint(value = "/echo", configurator = WebSocketConfigurator.class)
 public class WebSocketChat {
 
     private final ChatRepository chatRepository;
